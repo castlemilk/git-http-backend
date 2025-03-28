@@ -12,6 +12,7 @@ DOCKER_VOLUME=/tmp/git-repos
 REPO ?= test
 GIT_PASSWORD ?= test
 GIT_USERNAME ?= test
+VERSION ?= 0.0.1
 
 # Build flags
 BUILD_FLAGS=-v
