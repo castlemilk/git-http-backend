@@ -5,11 +5,13 @@ GOTEST=$(GOCMD) test
 BINARY_NAME=git-http-backend
 
 # Docker parameters
-DOCKER_IMAGE=git-http-backend
+DOCKER_IMAGE=castlemilk/git-http-backend
 DOCKER_TAG=latest
 DOCKER_PORT=3000
 DOCKER_VOLUME=/tmp/git-repos
 REPO ?= test-repo
+GIT_PASSWORD ?= test
+GIT_USERNAME ?= test
 
 # Build flags
 BUILD_FLAGS=-v
@@ -46,10 +48,9 @@ docker-run: docker-stop
 		--name $(BINARY_NAME) \
 		-p $(DOCKER_PORT):$(DOCKER_PORT) \
 		-v $(DOCKER_VOLUME):/tmp/git \
-		-e GIT_HTTP_BACKEND_ENABLE_RECEIVE_PACK=true \
-		-e GIT_HTTP_BACKEND_ENABLE_UPLOAD_PACK=true \
-		-e GIT_HTTP_EXPORT_ALL=true \
 		-e GIT_REPO_NAME=$(REPO) \
+		-e GIT_PASSWORD=$(GIT_PASSWORD) \
+		-e GIT_USERNAME=$(GIT_USERNAME) \
 		$(DOCKER_IMAGE):$(DOCKER_TAG)
 
 docker-stop:

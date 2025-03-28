@@ -106,11 +106,6 @@ func unauthorized(w http.ResponseWriter) {
 func startGitHTTPBackendServer(serverTempDir string, port int) (*http.Server, error) {
 	log.Printf("Starting Git HTTP backend server with temp dir: %s", serverTempDir)
 
-	// Set environment variables for the current process
-	os.Setenv("GIT_HTTP_BACKEND_ENABLE_RECEIVE_PACK", "true")
-	os.Setenv("GIT_HTTP_BACKEND_ENABLE_UPLOAD_PACK", "true")
-	os.Setenv("GIT_HTTP_EXPORT_ALL", "true")
-
 	// Find git-http-backend path
 	gitExecPath := os.Getenv("GIT_EXEC_PATH")
 	if gitExecPath == "" {
