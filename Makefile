@@ -9,7 +9,7 @@ DOCKER_IMAGE=castlemilk/git-http-backend
 DOCKER_TAG=latest
 DOCKER_PORT=3000
 DOCKER_VOLUME=/tmp/git-repos
-REPO ?= test-repo
+REPO ?= test
 GIT_PASSWORD ?= test
 GIT_USERNAME ?= test
 
